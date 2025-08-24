@@ -1,40 +1,37 @@
-// src/components/Layout.jsx
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { FaTachometerAlt, FaHome, FaUsers, FaChartBar } from "react-icons/fa"; // Font Awesome icons
+import { Outlet, Link } from "react-router-dom";
 
-export default function Layout({ children }) {
-  const linkClasses = ({ isActive }) =>
-    `flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 ${
-      isActive ? "bg-blue-100 font-semibold" : ""
-    }`;
-
+export default function Layout() {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md p-4">
-        <h2 className="text-2xl font-bold mb-6">Workforce Platform</h2>
-        <nav className="flex flex-col gap-2">
-          <NavLink to="/" className={linkClasses}>
-            <FaTachometerAlt /> Dashboard
-          </NavLink>
-          <NavLink to="/home" className={linkClasses}>
-            <FaHome /> Home
-          </NavLink>
-          <NavLink to="/employees" className={linkClasses}>
-            <FaUsers /> Employees
-          </NavLink>
-          <NavLink to="/reports" className={linkClasses}>
-            <FaChartBar /> Reports
-          </NavLink>
+      <aside className="w-64 bg-gray-100 min-h-screen p-4">
+        <nav>
+          <ul className="space-y-2">
+            <li>
+              <Link to="/" className="text-blue-600">Home</Link>
+            </li>
+            <li>
+              <Link to="/dashboard" className="text-blue-600">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/employees" className="text-blue-600">Employees</Link>
+            </li>
+            <li>
+              <Link to="/reports" className="text-blue-600">Reports</Link>
+            </li>
+          </ul>
         </nav>
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 p-6">{children}</main>
+      {/* Main content */}
+      <main className="flex-1 p-6">
+        <Outlet />
+      </main>
     </div>
   );
 }
+
+
 
 
 

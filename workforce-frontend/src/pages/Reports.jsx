@@ -1,34 +1,22 @@
 // src/pages/Reports.jsx
-import React from "react";
-import Layout from "../components/Layout";
-
 export default function Reports() {
   return (
-    <Layout>
-      <h1 className="text-2xl font-bold mb-6">Reports</h1>
+    <div className="p-6">
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">Reports</h1>
+      <p className="text-gray-600">
+        Generate and view workforce reports such as attendance, performance, and payroll.
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white shadow rounded p-4">
-          <h2 className="text-lg font-semibold text-gray-700">Monthly Attendance</h2>
-          <p className="mt-2 text-gray-600">
-            Track employee attendance trends over the month.
-          </p>
-          <div className="mt-4 h-40 bg-gray-100 rounded flex items-center justify-center">
-            <span className="text-gray-400">[Chart Placeholder]</span>
-          </div>
-        </div>
-
-        <div className="bg-white shadow rounded p-4">
-          <h2 className="text-lg font-semibold text-gray-700">Employee Performance</h2>
-          <p className="mt-2 text-gray-600">
-            View performance reports and KPIs.
-          </p>
-          <div className="mt-4 h-40 bg-gray-100 rounded flex items-center justify-center">
-            <span className="text-gray-400">[Chart Placeholder]</span>
-          </div>
-        </div>
+      {/* Example report section */}
+      <div className="bg-white shadow-md rounded-2xl p-6 mt-6">
+        <h2 className="text-xl font-semibold text-gray-700 mb-2">Monthly Attendance Report</h2>
+        <p className="text-gray-600 mb-4">View the summary of attendance for all employees this month.</p>
+        <button className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
+          Download Report
+        </button>
       </div>
-    </Layout>
+    </div>
   );
 }
+
 

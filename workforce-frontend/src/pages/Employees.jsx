@@ -1,6 +1,5 @@
 // src/pages/Employees.jsx
 import React, { useState } from "react";
-import Layout from "../components/Layout";
 
 export default function Employees() {
   const [employees, setEmployees] = useState([
@@ -15,21 +14,18 @@ export default function Employees() {
     status: "Active",
   });
 
-  const [editId, setEditId] = useState(null); // Track which employee is being edited
+  const [editId, setEditId] = useState(null);
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewEmployee((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle Add or Update
   const handleAdd = (e) => {
     e.preventDefault();
     if (!newEmployee.name || !newEmployee.role) return;
 
     if (editId !== null) {
-      // Update existing employee
       setEmployees(
         employees.map((emp) =>
           emp.id === editId ? { id: editId, ...newEmployee } : emp
@@ -37,29 +33,25 @@ export default function Employees() {
       );
       setEditId(null);
     } else {
-      // Add new employee
       const nextId =
         employees.length > 0 ? employees[employees.length - 1].id + 1 : 1;
       setEmployees([...employees, { id: nextId, ...newEmployee }]);
     }
 
-    // Reset form
     setNewEmployee({ name: "", role: "", status: "Active" });
   };
 
-  // Handle edit button click
   const handleEdit = (emp) => {
     setEditId(emp.id);
     setNewEmployee({ name: emp.name, role: emp.role, status: emp.status });
   };
 
-  // Handle delete button click
   const handleDelete = (id) => {
     setEmployees(employees.filter((emp) => emp.id !== id));
   };
 
   return (
-    <Layout>
+    <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Employees</h2>
 
       {/* Add/Edit Employee Form */}
@@ -138,9 +130,10 @@ export default function Employees() {
           ))}
         </tbody>
       </table>
-    </Layout>
+    </div>
   );
 }
+
 
 
 
